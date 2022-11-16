@@ -27,8 +27,11 @@ for tate in range(10):
         c.append(car)
     cars.append(c)
 
-print("消したい車の位置を入力して下さい")
-cars[4][5].delete(canvas)
+val = input("Where car do you hide? [1] :")
+val1 = int(val)
+val = input("Where car do you hide? [2] :")
+val2 = int(val)
+cars[val1][val2].delete(canvas)
 
 root.mainloop()
 
