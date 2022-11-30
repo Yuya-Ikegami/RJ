@@ -11,6 +11,7 @@ canvas.pack(fill = tk.BOTH, expand = True)
 #
 bai = 50
 size = 3
+result = 0
 
 cars = []
 
@@ -27,10 +28,18 @@ for tate in range(10):
         c.append(car)
     cars.append(c)
 
-val = input("Where car do you hide? [1] :")
-val1 = int(val)
-val = input("Where car do you hide? [2] :")
-val2 = int(val)
+while result == 0:
+    try:
+        val = input("Where car do you hide? :")
+        if int(val) >= 0 and int(val) <= 99:
+            val1 = int(val) // 10
+            val2 = int(val) % 10
+            result = 1
+        else:
+            print('0~99の数値を入力してください.')
+    except:
+        print('0~99の数値を入力してください.')
+
 cars[val1][val2].delete(canvas)
 
 root.mainloop()
