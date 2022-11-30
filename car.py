@@ -12,7 +12,7 @@ class Car:
         self.bottom = None
         self.tire1 = None
         self.tire2 = None
-        
+
     def create_car(self, canvas: tk.Canvas):
         self.top = canvas.create_rectangle(5 * self.size + self.x, 10 * self.size + self.y, 20 * self.size + self.x,
                                 15 * self.size + self.y, fill=self.color)
@@ -30,3 +30,12 @@ class Car:
         canvas.delete(self.bottom)
         canvas.delete(self.tire1)
         canvas.delete(self.tire2)
+
+    def move(self, canvas: tk.Canvas, x, y):
+        self.x += x
+        self.y += y
+
+        canvas.move(self.top, x, y)
+        canvas.move(self.bottom, x, y)
+        canvas.move(self.tire1, x, y)
+        canvas.move(self.tire2, x, y)
