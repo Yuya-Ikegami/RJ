@@ -17,19 +17,21 @@ color = "Blue"
 direction = 1      # 右向き
 car = Car(size, 100, 100, color)
 car.create_car(canvas)
-# root.update()
-# root.mainloop()
 
-while True:
-    if car.x+100>=700:
-        direction = -1
-    elif car.x-50<=0:
-        direction = 1
-    # if direction == 0:
-    #     car.x = car.x + 10
-    # else:
-    #     car.x = car.x - 10
-    car.move(canvas, direction, 0)
+def key_event(e):
+    key = e.keysym
+    x, y = 0, 0
+    if key == "Up":
+        y = -10
+    if key == "Down":
+        y = 10
+    if key == "Left":
+        x = -10
+    if key == "Right":
+        x = 10
 
-    root.update()
+    car.move(canvas, x, y)
+root.bind("<KeyPress>", key_event)
 
+root.mainloop()
+    #root.update()
