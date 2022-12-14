@@ -25,10 +25,7 @@ while True:
         direction = -1
     elif car.x-50<=0:
         direction = 1
-    # if direction == 0:
-    #     car.x = car.x + 10
-    # else:
-    #     car.x = car.x - 10
+
     car.move(canvas, direction, 0)
 
     root.update()

@@ -12,7 +12,6 @@ class Car:
         self.bottom = None
         self.tire1 = None
         self.tire2 = None
-        self.ball = None
 
     def create_car(self, canvas: tk.Canvas):
         self.top = canvas.create_rectangle(5 * self.size + self.x, 10 * self.size + self.y, 20 * self.size + self.x,

@@ -17,11 +17,19 @@ cannon.create_cannon(canvas)
 cannon.create_ball(canvas)
 
 #root.mainloop()
+balls = []
+
+def key_event(e):
+    key = e.keysym
+    if key == "k":
+        y = -10
+
 while True:
     if cannon.y3-50 < 0:
         yd = 350
     else :
         yd = -1
     cannon.move_ball(canvas, 0, yd)
+    root.bind("<KeyPress>", key_event)
 
     root.update()
