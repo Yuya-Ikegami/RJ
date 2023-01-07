@@ -19,9 +19,11 @@ cannon.create_ball(canvas)
 #root.mainloop()
 while True:
     if cannon.y3-50 < 0:
-        yd = 350
+        cannon.y3 = 450
+        cannon.delete(canvas)
+        cannon.create_ball(canvas)
     else :
         yd = -1
-    cannon.move_ball(canvas, 0, yd)
+        cannon.move_ball(canvas, 0, yd)
 
     root.update()

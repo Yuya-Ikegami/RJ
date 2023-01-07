@@ -1,4 +1,6 @@
 import tkinter as tk
+import math
+from car import Car
 from cannon import Cannon
 
 root = tk.Tk()
@@ -10,7 +12,12 @@ canvas = tk.Canvas(root, bg="white")
 # Canvasを配置
 canvas.pack(fill=tk.BOTH, expand=True)
 
-#cannon = Cannon(340, 750, 300, 800, color, 400, 400)
+size = 3
+color = "Blue"
+direction = 1.5      # 右向き
+car = Car(size, 100, 100, color)
+car.create_car(canvas)
+
 cannon = Cannon(380, 500, 340, 540, color, 400, 400)
 
 cannon.create_cannon(canvas)
@@ -21,7 +28,7 @@ cannon.delete(canvas)
 balls = []
 
 def key_event(e):
-    print("あ")
+    #print("あ")
     key = e.keysym
     if key == "k":
         cannon = Cannon(380, 500, 340, 540, color, 400, 400)
@@ -30,8 +37,27 @@ def key_event(e):
         balls.append(cannon)
 
 root.bind("<KeyPress>", key_event)
+
 while True:
+    if car.x+100>=900:
+        direction = -1.5
+    elif car.x-50<=0:
+        direction = 1.5
+
+    car.move(canvas, direction, 0)
+
     for i in balls:
+        #車の中心座標
+        carx = car.x + 22.5
+        cary = car.y + 37.5
+        #ボールの中心座標
+        ballx = i.x3 + 5
+        bally = i.y3 + 5
+
+        dist = math.sqrt(((carx - ballx) * (carx - ballx)) + ((cary - bally) * (cary - bally)))
+        if 0 <= dist <= 10:
+            car.move(canvas, -1 * car.x, 0)
+
         if i.y3 - 50 < 0:
             i.delete(canvas)
         else:
